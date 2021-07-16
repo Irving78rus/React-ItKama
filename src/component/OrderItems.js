@@ -13,7 +13,6 @@ function OrderItems(props) {
       </div>
       <div className="product-list">
          
-  
         <span className="price">Дата заказа {item.NewOrderDate}</span>
         <div className="actions">
           <div className="add-to-cart">
