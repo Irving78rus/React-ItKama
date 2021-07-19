@@ -1,6 +1,7 @@
+ 
 // @ts-ignore
-import black from '../black.jpg';
-import '../App.css';
+import black from "../../../src/img/black.jpg";
+import '../../../src/App.css'
 import React from "react";
 function Nav() {
   return (

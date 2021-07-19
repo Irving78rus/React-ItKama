@@ -1,6 +1,7 @@
 import React from 'react';
-import imgg from '../96.png';
-import '../App.css';
+// @ts-ignore
+import imgg from "../../../src/img/96.png";
+import '../../../src/App.css'
 
 function Service() {
   return (
@@ -86,12 +87,12 @@ function Service() {
         </li>
 
         <li className="service_li">
-          <a href="">
+          <a href="/Neighbors">
             <div className="service_block" id="service_block6">
               <img src={imgg} />
               <h5>
-                Полезная <br />
-                информация
+                Мои <br />
+                Соседи
               </h5>
             </div>
           </a>

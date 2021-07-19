@@ -1,5 +1,5 @@
 import React from "react";
-import "../App.css";
+import "../../../src/App.css";
 
 function OrderPush(props) {
     console.log(props);

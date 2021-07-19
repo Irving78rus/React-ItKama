@@ -1,11 +1,11 @@
-import "../App.css";
+import "../../../src/App.css";
 import React from "react";
-import OrderPush from "./OrderPush";
-import ButtonOrderCreate from "./ButtonOrderCreate";
-import OrderItems  from "./OrderItems";
+ 
 import { BrowserRouter, Switch, Route} from "react-router-dom";
-import OrderPushContainer from "./OrderPushContainer";
-import OrderItemsContainer from "./OrderItemsContainer";
+ 
+import ButtonOrderCreate from "../Order/ButtonOrderCreate";
+import OrderItemsContainer from "../Order/OrderItemsContainer";
+import OrderPushContainer from "../Order/OrderPushContainer";
 function AllOrder(props) {
    
   return (

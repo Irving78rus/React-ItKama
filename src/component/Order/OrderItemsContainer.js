@@ -1,11 +1,10 @@
-import React from "react";
 import { connect } from "react-redux";
 import {
   addOrderActionsCreater,
   UpdateAllOrderActionsCreater,
-} from "../redux/AllOrdersReducer";
-
-import OrderPush from "./OrderPush";
+} from "../../redux/AllOrdersReducer";
+import OrderItems from "./OrderItems";
+ 
 
 const mapStateToProps = (state) => {
   return {
@@ -23,6 +22,6 @@ function mapDispatchToProps(dispatch) {
     },
   };
 }
-const OrderPushContainer = connect(mapStateToProps,mapDispatchToProps)(OrderPush);
+const OrderItemsContainer = connect(mapStateToProps,mapDispatchToProps)(OrderItems);
 
-export default OrderPushContainer;
+export default OrderItemsContainer;

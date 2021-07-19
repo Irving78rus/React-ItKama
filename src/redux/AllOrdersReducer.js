@@ -55,7 +55,7 @@ const AllOrdersReducer = (state = initialState, action) => {
       return stateCopy;
      
     default:
-      return stateCopy;
+      return state ;
   }
 };
 

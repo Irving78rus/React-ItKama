@@ -1,7 +1,7 @@
-import "../App.css";
+import '../../../src/App.css'
 import React from "react";
 
-function Rent(props) {
+function Sellbuy(props) {
   const ProductItem = props.data.map((item) => (
     <div className="product-item">
       <div className="product-img">
@@ -28,10 +28,10 @@ function Rent(props) {
 
   return (
     <div>
-      <h2>аренда </h2>
+      <h2>Куплю-Продам </h2>
       <div className="main_content">{ProductItem}</div>;
     </div>
   );
 }
 
-export default Rent;
+export default Sellbuy;
