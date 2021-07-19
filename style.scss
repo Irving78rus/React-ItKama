@@ -8,6 +8,10 @@ body {
   background-size: 100% 100%; /* Для всех браузеров сразу  */
   background-repeat: no-repeat;
 }
+.photo{
+  width: 100px;
+  height: 100px;
+}
 a {
   text-decoration: none;
 }
@@ -157,6 +161,7 @@ a {
   background-color: rgba(255, 255, 255, 0.2);
   height: 1000px;
   border: 2px solid white;
+  overflow: auto;
   h2 {
     padding-top: 30px;
     color: white;
