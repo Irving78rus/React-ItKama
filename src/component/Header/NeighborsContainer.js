@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Neighbors from './MyNeighbors'
+import Users from './MyNeighbors'
 import { followAC, setUsersAC, unfollowAC } from '../../redux/UsersReducer';
 
 let mapStateToProps = (state) => {
@@ -25,6 +25,6 @@ let mapDispatchToProps = (dispatch) => {
      
 }
 
-export default connect (mapStateToProps, mapDispatchToProps) (Neighbors)
+export default connect (mapStateToProps, mapDispatchToProps) (Users)
 
  
