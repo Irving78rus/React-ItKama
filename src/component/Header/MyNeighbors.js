@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+// @ts-ignore
 import userPhoto from '../../assets/images/man.png'
 import "../../../src/App.css";
 
