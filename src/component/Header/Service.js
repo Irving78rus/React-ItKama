@@ -57,7 +57,7 @@ function Service() {
         </li>
 
         <li className="service_li">
-          <a href="">
+          <a href="/give-accept">
             <div className="service_block" id="service_block4">
               <img src={imgg}/>
               <h5>
