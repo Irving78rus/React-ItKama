@@ -12,7 +12,7 @@ import store from "./redux/redux-store.js";
 import AllOrder from "./component/Header/AllOrder";
 
 import NeighborsContainer from "./component/Header/NeighborsContainer";
-import GiveAcceptContainer from "./component/Header/GiveAccept/GiveAcceptContainer";
+import GiveAcceptContainer from "./component/Header/GiveAcceptContainer";
 
 
 function App(props) {

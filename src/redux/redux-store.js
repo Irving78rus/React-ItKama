@@ -10,12 +10,11 @@ let reducers = combineReducers({
     Orders: AllOrdersReducer,
     Product: ProductReducer,
     usersPage: usersReducer,
-    GiveAccept: GiveAcceptReducer,
+    GiveAcceptReducer: GiveAcceptReducer,
 })
 
-
+ 
 let store = createStore(reducers) ;
  
-window.store = store;
- 
+  
 export default store
