@@ -1,6 +1,6 @@
 // import logo from "./logo.svg";
 // import imgg from "./96.png";
-import Nav from "./component/Header/Nav";
+ 
 import React from "react";
 import Service from "./component/Header/Service";
 import Rent from "./component/Header/Rent";
@@ -13,7 +13,8 @@ import AllOrder from "./component/Header/AllOrder";
 
 import NeighborsContainer from "./component/Header/NeighborsContainer";
 import GiveAcceptContainer from "./component/Header/GiveAccept/GiveAcceptContainer";
-
+ 
+import NavContainer from "./component/Header/Navigation/NavContainer";
 
 function App(props) {
  
@@ -22,21 +23,22 @@ function App(props) {
       <div className="body">
         <header className="header">
           <div className="container">
-            <Nav />
+            <NavContainer/>
             <Service />
           </div>
         </header>
         <div className="main container">
           <Route exact path="/ " component={App} />
           <Route path="/Rent" render={() => <Rent data={store.getState().Product} />} />
-          <Route path="/give-accept" render={() => <GiveAcceptContainer/>} />
+          <Route path="/give-accept/:userId?" render={() => <GiveAcceptContainer/>} />
           <Route path="/Sellbuy" render={() => <Sellbuy data={store.getState().Product} />} />
           <Route path="/AllOrder" render={() => <AllOrder CreatedOrders={store.getState().Orders.CreatedOrders} />} />
           <Route path="/neighbors" render={() =>  <NeighborsContainer/>} />
+          
         </div>
       </div>
     </BrowserRouter>
-  );
+  ) 
 }
 
 export default App;

@@ -21,7 +21,7 @@ let initialState =
 
 const ProductReducer = (state = initialState, action) => {
    
-      return state;
+      return state
    
 };
 

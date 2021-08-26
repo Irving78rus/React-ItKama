@@ -3,6 +3,7 @@ import usersReducer from "./UsersReducer";
  
 import ProductReducer from "./ProductReducer";
 import GiveAcceptReducer from "./GiveAcceptReducer";
+import authReducer from './auth-reducer';
 
 const { createStore, combineReducers } = require("redux");
 
@@ -10,12 +11,13 @@ let reducers = combineReducers({
     Orders: AllOrdersReducer,
     Product: ProductReducer,
     usersPage: usersReducer,
-    GiveAccept: GiveAcceptReducer,
+    GiveAcceptReducer: GiveAcceptReducer,
+    auth: authReducer,
 })
 
-
+ 
 let store = createStore(reducers) ;
+
  
-window.store = store;
- 
+  
 export default store
