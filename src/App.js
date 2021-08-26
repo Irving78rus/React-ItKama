@@ -1,6 +1,6 @@
 // import logo from "./logo.svg";
 // import imgg from "./96.png";
-import Nav from "./component/Header/Navigation/Nav";
+ 
 import React from "react";
 import Service from "./component/Header/Service";
 import Rent from "./component/Header/Rent";
@@ -13,7 +13,8 @@ import AllOrder from "./component/Header/AllOrder";
 
 import NeighborsContainer from "./component/Header/NeighborsContainer";
 import GiveAcceptContainer from "./component/Header/GiveAccept/GiveAcceptContainer";
-import LoginContainer from "./component/Header/login/LoginContainer";
+ 
+import NavContainer from "./component/Header/Navigation/NavContainer";
 
 function App(props) {
  
@@ -22,7 +23,7 @@ function App(props) {
       <div className="body">
         <header className="header">
           <div className="container">
-            <Nav/>
+            <NavContainer/>
             <Service />
           </div>
         </header>

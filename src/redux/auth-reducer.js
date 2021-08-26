@@ -1,10 +1,10 @@
 const SET_USER_DATA = "SET_USER_DATA";
-const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
+ 
 let initialState = {
   id: null,
   email: null,
   login: null,
-  
+   
   isAuth: false,
 };
 
@@ -14,6 +14,7 @@ const authReducer = (state = initialState, action) => {
     case SET_USER_DATA: {
       return { ...state, email: action.email,id: action.id,login: action.login, isAuth: true,  };
     }
+   
      
     default:
       return state;
@@ -23,5 +24,6 @@ const authReducer = (state = initialState, action) => {
 export const setAuthUserData = (email, id,  login) => {
   return { type: SET_USER_DATA, email, id,  login };
 };
+ 
 
 export default authReducer;

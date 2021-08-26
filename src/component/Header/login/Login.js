@@ -12,7 +12,7 @@ function Login(props) {
   return (
      <div>
      
-{props.isAuth? <NavLink className="nav-link" to={'/login'}>{props.login}</NavLink>: <NavLink className="nav-link" to={'/login'}>Вход</NavLink>}
+{props.data.isAuth? <NavLink className="nav-link" to={'/login'}>{props.data.login}</NavLink>: <NavLink className="nav-link" to={'/login'}>Вход</NavLink>}
 
      
      </div>
