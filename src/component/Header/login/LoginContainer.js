@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import axios from "axios";
-import { setAuthUserData } from "../../../redux/auth-reducer";
+ 
+import { setAuthThunkCreator } from "../../../redux/auth-reducer";
 import Login from "./Login";
-import Nav from "../Navigation/Nav";
+ 
 
 class LoginContainer extends React.Component {
   constructor(props) {
@@ -11,17 +11,7 @@ class LoginContainer extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-
-        if (response.data.resultCode === 0) {
-          let { email, id, login } = response.data.data;
-          this.props.setAuthUserData(email, id, login);
-        }
-      });
+    this.props.setAuthThunkCreator( )
   }
 
   render() {
@@ -41,4 +31,4 @@ const mapStateToProps = (state) => ({
         login: state.auth.login,
 });
 
-        export default connect(mapStateToProps, {setAuthUserData})(LoginContainer);
+        export default connect(mapStateToProps, {setAuthThunkCreator})(LoginContainer);

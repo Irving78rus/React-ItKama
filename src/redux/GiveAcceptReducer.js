@@ -1,7 +1,9 @@
+import { getUsersProfileApi } from "../api/api";
+
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let initialState = {
-    ProductItem: [
+  ProductItem: [
     {
       foto: "https://avatars.mds.yandex.net/get-zen_doc/1578824/pub_5ddd072f3efb4d2736dc4c99_5ddd07363676ed2b9e752095/scale_1200",
       price: "1200",
@@ -34,6 +36,14 @@ const GiveAcceptReducer = (state = initialState, action) => {
 
 export const setUserProfile = (profile) => {
   return { type: SET_USER_PROFILE, profile: profile };
+};
+
+export const getUsersThunkCreator = (userId) => {
+  return (dispatch) => {
+    getUsersProfileApi(userId).then((data) => {
+      dispatch(setUserProfile(data));
+    });
+  };
 };
 
 export default GiveAcceptReducer;

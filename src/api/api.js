@@ -25,3 +25,16 @@ export const followApi = (id = 1) => {
     .then(response =>response.data)
   };
 
+
+  export const getUsersProfileApi = (userId =2) => {
+    return instance.get(`profile/` + userId)
+    .then(response =>response.data)
+     
+  };  
+
+  export const LoginApi = ( ) => {
+    return instance.get(`auth/me`)
+    .then(response =>response.data)
+     
+  }; 
+
