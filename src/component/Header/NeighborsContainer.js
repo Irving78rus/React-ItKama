@@ -1,19 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import Users from "./MyNeighbors";
-import axios from "axios";
 import {
-  follow,
+  followThunkCreator,
   setCurrentPage,
-  setTotalUsersCount,
-  setUsers,
-  toggleIsFetching,
-  unfollow,
+  unFollowThunkCreator,
   toggleIsFollowingProgress,
+  getUsersThunkCreator,
 } from "../../redux/UsersReducer";
 
+ 
 import Preloader from "../Preloader/Preloader";
-import { getUsers } from "../../api/api";
 
 class UsersContainer extends React.Component {
   constructor(props) {
@@ -21,31 +18,22 @@ class UsersContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.toggleIsFetching(true);
-    getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
-        this.props.toggleIsFetching(false);
-        this.props.setUsers(data.items);
-        this.props.setTotalUsersCount(data.totalCount);
-      });
+    this.props.getUsersThunkCreator(
+      this.props.currentPage,
+      this.props.pageSize
+    );
   }
 
   onPageChanged = (pageNumber) => {
     this.props.setCurrentPage(pageNumber);
-    this.props.toggleIsFetching(true);
-    getUsers(pageNumber, this.props.pageSize).then((data) => {
-        this.props.toggleIsFetching(false);
-        this.props.setUsers(data.items);
-      });
+    this.props.getUsersThunkCreator(pageNumber, this.props.pageSize);
   };
 
   render() {
     return (
       <>
         {this.props.isFetching ? <Preloader /> : null}
-        <Users
-         {...this.props}
-          onPageChanged={this.onPageChanged}
-        />
+        <Users {...this.props} onPageChanged={this.onPageChanged} />
       </>
     );
   }
@@ -59,19 +47,15 @@ let mapStateToProps = (state) => {
     currentPage: state.usersPage.currentPage,
     isFetching: state.usersPage.isFetching,
     followingInProgress: state.usersPage.followingInProgress,
-    
   };
 };
 
-
 export default connect(mapStateToProps, {
-  follow,
-  unfollow,
-  setUsers,
+  unFollowThunkCreator,
+  followThunkCreator,
   setCurrentPage,
-  setTotalUsersCount,
-  toggleIsFetching,
   toggleIsFollowingProgress,
+  getUsersThunkCreator,
 })(UsersContainer);
 
 // let mapDispatchToProps = (dispatch) => {

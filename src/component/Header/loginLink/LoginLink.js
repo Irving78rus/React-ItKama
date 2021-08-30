@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
  
 import Preloader from "../../Preloader/Preloader";
 
-function Login(props) {
+function LoginLink(props) {
   console.log(props);
   if (!props) {
     return <Preloader /> 
@@ -21,4 +21,4 @@ function Login(props) {
   )
 }
 
-export default Login;
+export default LoginLink;

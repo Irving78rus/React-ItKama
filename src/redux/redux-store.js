@@ -4,8 +4,8 @@ import usersReducer from "./UsersReducer";
 import ProductReducer from "./ProductReducer";
 import GiveAcceptReducer from "./GiveAcceptReducer";
 import authReducer from './auth-reducer';
-
-const { createStore, combineReducers } = require("redux");
+import thunkMiddleware from 'redux-thunk';
+const { createStore, combineReducers, applyMiddleware } = require("redux");
 
 let reducers = combineReducers({
     Orders: AllOrdersReducer,
@@ -16,7 +16,7 @@ let reducers = combineReducers({
 })
 
  
-let store = createStore(reducers) ;
+let store = createStore(reducers,  applyMiddleware(thunkMiddleware)) ;
 
  
   
