@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import "../../../src/App.css";
 
 function OrderPush(props) {
@@ -19,6 +20,7 @@ function OrderPush(props) {
     props.UpdateAllOrder(message, date, phone, name )
 
   };
+  
   return (
     <div>
       <form className="form_order">

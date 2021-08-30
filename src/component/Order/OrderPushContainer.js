@@ -10,6 +10,7 @@ const mapStateToProps = (state) => {
   return {
     NewOrder: state.Orders.NewOrder,
     CreatedOrders: state.Orders.CreatedOrders,
+    
   };
 };
 function mapDispatchToProps(dispatch) {

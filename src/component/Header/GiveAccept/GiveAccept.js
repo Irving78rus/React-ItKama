@@ -1,4 +1,5 @@
 import React from "react";
+ 
 import Preloader from "./../../Preloader/Preloader";
 
 function GiveAccept(props) {
@@ -6,6 +7,7 @@ function GiveAccept(props) {
   if (!props.profile) {
     return <Preloader />;
   }
+  
   const ProductItem = props.ProductItem.map((item) => (
     <div className="product-item">
       <div className="product-img">

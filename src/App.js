@@ -11,10 +11,14 @@ import { BrowserRouter, Route } from "react-router-dom";
 import store from "./redux/redux-store.js";
 import AllOrder from "./component/Header/AllOrder";
 
-import NeighborsContainer from "./component/Header/NeighborsContainer";
+ 
 import GiveAcceptContainer from "./component/Header/GiveAccept/GiveAcceptContainer";
  
 import NavContainer from "./component/Header/Navigation/NavContainer";
+ 
+import NeighborsContainer from "./component/Header/NeighborsContainer";
+import LoginPage from "./component/loginPage/loginPage";
+import LoginPageConainer from "./component/loginPage/loginPageConainer";
 
 function App(props) {
  
@@ -28,12 +32,15 @@ function App(props) {
           </div>
         </header>
         <div className="main container">
+        <Route path="/login" render={() =>  <LoginPageConainer />} />
           <Route exact path="/ " component={App} />
           <Route path="/Rent" render={() => <Rent data={store.getState().Product} />} />
           <Route path="/give-accept/:userId?" render={() => <GiveAcceptContainer/>} />
           <Route path="/Sellbuy" render={() => <Sellbuy data={store.getState().Product} />} />
           <Route path="/AllOrder" render={() => <AllOrder CreatedOrders={store.getState().Orders.CreatedOrders} />} />
           <Route path="/neighbors" render={() =>  <NeighborsContainer/>} />
+         
+          
           
         </div>
       </div>

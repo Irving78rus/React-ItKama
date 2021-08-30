@@ -19,6 +19,7 @@ function AllOrder(props) {
         
         <Route exact path="/AllOrder/OrderPush" render={() => <OrderPushContainer />} />
         {/* NewOrder={props.NewOrder}   dispatch={props.dispatch} */}
+        
          <OrderItemsContainer   CreatedOrders={props.CreatedOrders}  />  
           
         
