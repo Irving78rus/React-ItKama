@@ -3,14 +3,10 @@ import React from "react";
 import userPhoto from "../../assets/images/man.png";
 import "../../../src/App.css";
 import { NavLink } from "react-router-dom";
-import axios from "axios";
-
-import {
-  followThunkCreator,
-  unFollowThunkCreator,
-} from "../../redux/UsersReducer";
+ 
 
 let Users = (props) => {
+  
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
@@ -19,18 +15,16 @@ let Users = (props) => {
   return (
     <div>
       <div>
-        {pages.map((p) => {
-          return (
-            <span
-              className={props.currentPage === p && "selected"}
+        {pages.map((p) => (
+                        <span key={p}  className={props.currentPage === p && "selected"}
+            
               onClick={(e) => {
                 props.onPageChanged(p);
               }}
             >
               {p}
             </span>
-          );
-        })}
+          ))}
       </div>
       {props.users.map((u) => (
         <div key={u.id}>
@@ -39,7 +33,7 @@ let Users = (props) => {
               <NavLink to={"/give-accept/" + u.id}>
                 <img
                   src={u.photos.small != null ? u.photos.small : userPhoto}
-                  className="photo"
+                  className="photo" alt="foto"
                 />
               </NavLink>
             </div>

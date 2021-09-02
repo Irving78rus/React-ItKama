@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
  
 import Preloader from "./../../Preloader/Preloader";
 
@@ -9,11 +10,10 @@ function GiveAccept(props) {
   }
   
   const ProductItem = props.ProductItem.map((item) => (
-    <div className="product-item">
-      <div className="product-img">
-        <a href="">
-          <img src={props.profile.photos.large} />
-        </a>
+    <div className="product-item" key={item.id}>
+      <div className="product-img"  >
+      <NavLink to=''><img src={props.profile.photos.large} alt='foto'/></NavLink>
+       
       </div>
       <div className="product-list">
         <h3>{props.profile.aboutMe}</h3>
@@ -21,9 +21,8 @@ function GiveAccept(props) {
         <span className="price">{props.profile.lookingForAJob}</span>
         <div className="actions">
           <div className="add-to-cart">
-            <a href="" className="cart-button">
-              {props.profile.lookingForAJobDescription}
-            </a>
+          <NavLink to='' className="cart-button"><img src={props.profile.lookingForAJobDescription} alt='foto'/></NavLink>
+             
 
             <div className="cart-name">Дмитрий</div>
           </div>

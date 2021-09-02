@@ -4,6 +4,7 @@ import black from "../../../img/black.jpg";
 import "../../../../src/App.css";
 import React from "react";
 import LoginLink from "../loginLink/LoginLink";
+import { NavLink } from "react-router-dom";
 
 function Nav(props) {
    
@@ -11,34 +12,30 @@ function Nav(props) {
     <div>
       <nav className="nav container">
         <div className="nav-logo">
-          <a href="#">
-            <img alt="Кушелевка" className="navbar-img" src={black} />
-          </a>
+          <NavLink to="#">  <img alt="Кушелевка" className="navbar-img" src={black}  /></NavLink>
+           
         </div>
         <div className="nav-menu">
           <ul className="nav-ul">
             <li>
-              <a className="nav-link" href="">
-                главная
-              </a>
+            <NavLink to="#" className="nav-link">          главная</NavLink>
+           
+             
             </li>
             <li>
               <LoginLink data={props} />
             </li>
             <li>
-              <a className="nav-link" href="">
-                Регистрация
-              </a>
+            <NavLink to="#" className="nav-link">    Регистрация</NavLink>
+              
             </li>
             <li>
-              <a className="nav-link" href="">
-                Блог
-              </a>
+            <NavLink to="#" className="nav-link">     Блог</NavLink>
+              
             </li>
             <li>
-              <a className="nav-link" href="">
-                Контакты
-              </a>
+            <NavLink to="#" className="nav-link">     Контакты</NavLink>
+              
             </li>
           </ul>
         </div>

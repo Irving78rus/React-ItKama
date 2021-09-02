@@ -1,12 +1,14 @@
 import "../../../src/App.css";
 import React from "react";
+import { NavLink } from 'react-router-dom';
  
 
 function OrderItems(props) {
-  console.log(props);
+   
   const OrdersItem = props.CreatedOrders.map((item) => (
-    <div className="Orders_content">
-      <div className="product-img">
+   
+    <div className="Orders_content" key={item.id}>
+      <div className="product-img" >
         <p>
           {item.NewOrderText}  
         </p>
@@ -16,9 +18,8 @@ function OrderItems(props) {
         <span className="price">Дата заказа {item.NewOrderDate}</span>
         <div className="actions">
           <div className="add-to-cart">
-            <a href="" className="cart-button">
-              {item.NewOrderPhone}
-            </a>
+            <NavLink className="cart-button" to ={''}> {item.NewOrderPhone}</NavLink>
+             
   
             <div className="cart-name">{item.NewOrderName}</div>
           </div>

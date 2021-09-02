@@ -8,6 +8,7 @@ let initialState = {
       NewOrderDate: "11.11",
       NewOrderPhone: "+79817220312",
       NewOrderName: "Dima",
+      id:1,
     },
   ],
   NewOrder: [
@@ -16,6 +17,7 @@ let initialState = {
       NewOrderDate: "2021-04-24T16:02",
       NewOrderPhone: "+79817220312",
       NewOrderName: "Dima",
+      id:2,
     },
   ],
 }
@@ -35,6 +37,7 @@ const AllOrdersReducer = (state = initialState, action) => {
         NewOrderDate: state.NewOrder[0].NewOrderDate,
         NewOrderPhone: state.NewOrder[0].NewOrderPhone,
         NewOrderName: state.NewOrder[0].NewOrderName,
+        id:state.NewOrder[0].id,
       };
       
         stateCopy.CreatedOrders.push(CreateNewOrder)

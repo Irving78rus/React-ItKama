@@ -8,7 +8,7 @@ function LoginLink(props) {
   if (!props) {
     return <Preloader /> 
   }
-
+ 
   return (
      <div>
      
