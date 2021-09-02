@@ -1,9 +1,9 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+ 
 import "../../../src/App.css";
 
 function OrderPush(props) {
-    console.log(props);
+     
   let textOrder = React.createRef();
   let nameOrder = React.createRef();
   let telOrder = React.createRef();

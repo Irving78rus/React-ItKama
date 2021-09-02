@@ -1,13 +1,14 @@
-import '../../../src/App.css'
+import "../../../src/App.css";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function Sellbuy(props) {
   const ProductItem = props.data.map((item) => (
-    <div className="product-item">
+    <div className="product-item" key={item.id}>
       <div className="product-img">
-        <a href="">
-          <img src={item.foto} />
-        </a>
+        <NavLink to="">
+          <img src={item.foto} alt="foto" />
+        </NavLink>
       </div>
       <div className="product-list">
         <h3>Домик у моря</h3>
@@ -15,9 +16,9 @@ function Sellbuy(props) {
         <span className="price">{item.price}</span>
         <div className="actions">
           <div className="add-to-cart">
-            <a href="" className="cart-button">
-              {item.phone}
-            </a>
+            <NavLink to="" className="cart-button">
+             {item.phone}    
+            </NavLink>
 
             <div className="cart-name">Дмитрий</div>
           </div>

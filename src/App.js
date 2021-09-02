@@ -17,7 +17,7 @@ import GiveAcceptContainer from "./component/Header/GiveAccept/GiveAcceptContain
 import NavContainer from "./component/Header/Navigation/NavContainer";
  
 import NeighborsContainer from "./component/Header/NeighborsContainer";
-import LoginPage from "./component/loginPage/loginPage";
+ 
 import LoginPageConainer from "./component/loginPage/loginPageConainer";
 
 function App(props) {

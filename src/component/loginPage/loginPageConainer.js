@@ -1,16 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+ 
 import LoginPage from "./loginPage";
 
+class LoginPageConainer extends React.Component {
+    render() {
 
+        return <>
+             
+            <LoginPage {...this.props} />;
+        </>
+    }
 
- 
+}
 
-let mapStateToPropsqwe = (state) => ({
-  isAuth: state.auth.isAuth,
+let mapStateToProps = (state) => ({
+    isAuth:state.auth.isAuth
 });
-
- const LoginPageConainer =  connect(  mapStateToPropsqwe,  {})(LoginPage);
  
- export default LoginPageConainer
+
+export default connect(mapStateToProps, {})(LoginPageConainer);

@@ -4,9 +4,7 @@ import { setAuthThunkCreator } from "../../../redux/auth-reducer";
 import Nav from "./Nav";
 
 class NavContainer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+ 
 
   componentDidMount() {
     this.props.setAuthThunkCreator();
