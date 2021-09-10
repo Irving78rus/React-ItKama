@@ -19,6 +19,7 @@ import NavContainer from "./component/Header/Navigation/NavContainer";
 import NeighborsContainer from "./component/Header/NeighborsContainer";
  
 import LoginPageConainer from "./component/loginPage/loginPageConainer";
+import ProfileConainer from "./component/Profile/ProfileConainer";
 
 function App(props) {
  
@@ -33,6 +34,7 @@ function App(props) {
         </header>
         <div className="main container">
         <Route path="/login" render={() =>  <LoginPageConainer />} />
+        <Route path="/Profile" render={() =>  <ProfileConainer />} />
           <Route exact path="/ " component={App} />
           <Route path="/Rent" render={() => <Rent data={store.getState().Product} />} />
           <Route path="/give-accept/:userId?" render={() => <GiveAcceptContainer/>} />
@@ -48,4 +50,4 @@ function App(props) {
   ) 
 }
 
-export default App;
+export default App 

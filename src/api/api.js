@@ -1,4 +1,5 @@
 import axios from "axios";
+ 
 
 
 
@@ -32,7 +33,7 @@ export const followApi = (id = 1) => {
     .then(response =>response.data)
      
   };  
-
+ 
   export const LoginApi = ( ) => {
      
     return instance.get(`auth/me`)
@@ -40,4 +41,17 @@ export const followApi = (id = 1) => {
    
      
   }; 
+  export  const ProfileApi = {
+    
+      getStatus (userId =2)   {
+      return instance.get(`profile/status/` + userId)
+      .then(response =>response.data)
+       
+    },  
+      updateStatus   (status )   {
+      return instance.put(`profile/status`,   status  )
+      .then(response =>response.data)
+       
+    }, 
+  }
    

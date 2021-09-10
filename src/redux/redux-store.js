@@ -5,6 +5,7 @@ import ProductReducer from "./ProductReducer";
 import GiveAcceptReducer from "./GiveAcceptReducer";
 import authReducer from './auth-reducer';
 import thunkMiddleware from 'redux-thunk';
+import ProfileReducer from "./ProfileReducer";
 const { createStore, combineReducers, applyMiddleware } = require("redux");
 
 let reducers = combineReducers({
@@ -13,6 +14,7 @@ let reducers = combineReducers({
     usersPage: usersReducer,
     GiveAcceptReducer: GiveAcceptReducer,
     auth: authReducer,
+    ProfileReducer: ProfileReducer,
 })
 
  

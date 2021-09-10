@@ -15,7 +15,7 @@ class LoginPageConainer extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
-    isAuth:state.auth.isAuth
+     
 });
  
 
