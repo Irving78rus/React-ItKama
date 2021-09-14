@@ -43,13 +43,14 @@ export const followApi = (id = 1) => {
   }; 
   export  const ProfileApi = {
     
-      getStatus (userId =2)   {
-      return instance.get(`profile/status/` + userId)
-      .then(response =>response.data)
+      getStatus (userId)   {
+      return instance.get(`profile/status/${userId}`)
+       
        
     },  
       updateStatus   (status )   {
-      return instance.put(`profile/status`,   status  )
+        debugger
+      return instance.put(`profile/status/`,   status  )
       .then(response =>response.data)
        
     }, 
