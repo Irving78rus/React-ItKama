@@ -1,80 +1,79 @@
 import React from "react";
- 
+import { Field, reduxForm } from "redux-form";
 import "../../../src/App.css";
+import { NavLink } from 'react-router-dom';
+import { maxLengthCreator, required } from "../../utils/validators";
+import { Input, Textarea } from "../Preloader/FormControls";
+
+
+const maxLength10 = maxLengthCreator(10)
+const OrderForm = (props) => {
+  return (
+    <form className="form_order" onSubmit={props.handleSubmit}>
+      <label> <NavLink className="nav-link" to={'/AllOrder'}>Назад</NavLink></label>
+       <Field
+        className="formclass"
+        placeholder="Описание заказа"
+        name={"TextOrder"}
+        validate ={[required,maxLength10]}
+        component={Textarea}
+      />
+      <label>
+        <Field
+          className="input-order"
+          placeholder="Имя"
+          name={"UserName"}
+          validate ={[required,maxLength10]}
+          component={Input}
+        />
+      </label>
+      <label>
+        <Field
+          className="input-order"
+          placeholder="Телефон"
+          name={"UserPhone"}
+          validate ={[required,maxLength10]}
+          component={Input}
+        />
+      </label>
+      <label>
+        <Field
+          className="input-order"
+          placeholder="дата заказа"
+          name={"DateOrder"}
+          validate ={[required,maxLength10]}
+          component={Input}
+        />
+      </label>
+      <button className="red"  >
+        Опубликовать
+      </button>
+    </form>
+  );
+};
+
 
 function OrderPush(props) {
+  const onSubmit = (formData) => {
      
-  let textOrder = React.createRef();
-  let nameOrder = React.createRef();
-  let telOrder = React.createRef();
-  let dateOrder = React.createRef();
-  let onAddOrder = () => {
-    props.addOrder( );
-     
-  };
-  let CreateNewOrder = () => {
-    let message = textOrder.current.value;
-    let date = dateOrder.current.value;
-    let phone = telOrder.current.value;
-    let name = nameOrder.current.value;
-    props.UpdateAllOrder(message, date, phone, name )
-
-  };
+    let message = formData.TextOrder;
+    let date = formData.DateOrder;
+    let phone = formData.UserPhone;
+    let name = formData.UserName;
+    
+      // props.UpdateAllOrder(message, date, phone, name);
+    props.addOrder(message, date, phone, name);
   
+  } 
+
   return (
     <div>
-      <form className="form_order">
-        <label>
-          <a className="nav-link" href="/AllOrder">
-            Назад
-          </a>
-        </label>
-
-        <textarea
-          onChange={CreateNewOrder}
-          className="formclass"
-          placeholder="Описание заказа"
-          ref={textOrder}
-          value={props.NewOrder[0].NewOrderText}
-        ></textarea>
-        <label>
-          <input
-            onChange={CreateNewOrder}
-            ref={nameOrder}
-            value={props.NewOrder[0].NewOrderName}
-            className="input-order"
-            type="text"
-            placeholder="Имя"
-          />
-        </label>
-        <label>
-          <input
-            onChange={CreateNewOrder}
-            ref={telOrder}
-            value={props.NewOrder[0].NewOrderPhone}
-            className="input-order"
-            type="tel"
-            placeholder="Телефон"
-          />
-        </label>
-        <label>
-          <input
-            onChange={CreateNewOrder}
-            ref={dateOrder}
-            value={props.NewOrder[0].NewOrderDate}
-            className="input-order"
-            type="datetime-local"
-            placeholder="дата заказа"
-          />
-        </label>
-        {/* <a href="/AllOrder"> */}
-        <button onClick={onAddOrder} className="red" type="button">
-          Опубликовать
-        </button>
-        {/* </a> */}
-      </form>
+     
+             
+            <CreateOrderReduxForm onSubmit={onSubmit} />
     </div>
   );
 }
 
+const CreateOrderReduxForm = reduxForm({ form: "CreateOrder" })(OrderForm);
 export default OrderPush;

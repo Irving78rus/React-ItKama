@@ -12,7 +12,7 @@ class ProfileConainer extends React.Component {
 
 
   componentDidMount() {
-     debugger
+      
     let userId = this.props.id
     if (!userId) {
       userId = 2

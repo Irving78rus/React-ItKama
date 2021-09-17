@@ -1,20 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
+import { login } from '../../redux/auth-reducer';
+import { maxLengthCreator, required } from '../../utils/validators';
+import { Input } from '../Preloader/FormControls';
  
 
 
-
+const maxLength10 = maxLengthCreator(33)
 const LoginForm = (props)=> {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        <Field placeholder={"LOgin"} name={"login"} component ={"input"}/>
+        <Field placeholder={"LOgin"} validate ={[required, maxLength10]} name={"email"} component ={Input}/>
       </div>
       <div>
-        <Field placeholder={"Password"} name={"password"} component ={"input"}/>
+        <Field placeholder={"Password"} validate ={[required, maxLength10]} name={"password"}   component ={Input}/>
       </div>
       <div>
-        <Field type={"checkbox"} name={"rememberMe"} component={"input"} />  remembe me
+        <Field type={"checkbox"} name={"rememberMe"} component={Input} />  remembe me
       </div>
       <div>
         <button> LOgin</button>
@@ -26,7 +31,14 @@ const LoginForm = (props)=> {
 const LoginPage =(props)=> {
   const onSubmit =(formData)=>{
     console.log(formData);
+    props.login(formData.email,formData.password,formData.rememberMe)
+    
   }
+  
+  if(props.isAuth){
+    return<Redirect to={"/Profile"}/>
+  }
+
   return (
    <div  >
      <h1>login</h1>
@@ -34,6 +46,10 @@ const LoginPage =(props)=> {
    </div>
  )
 }
-
+const mapStatetoProps=(state)=>(
+  {
+    isAuth : state.auth.isAuth
+  }
+)
 const LoginReduxForm = reduxForm({form:'login'})(LoginForm)
-export default LoginPage
+export default connect(mapStatetoProps,{login}) (LoginPage)

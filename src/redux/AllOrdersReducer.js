@@ -1,6 +1,5 @@
 const ADD_ORDER = "ADD-ORDER";
-const UpdateAllOrder = "UpdateAllOrder";
-
+ 
 let initialState = {
   CreatedOrders: [
     {
@@ -8,74 +7,47 @@ let initialState = {
       NewOrderDate: "11.11",
       NewOrderPhone: "+79817220312",
       NewOrderName: "Dima",
-      id:1,
+      
     },
   ],
-  NewOrder: [
-    {
-      NewOrderText: "Надо закакзать много товаров из икея",
-      NewOrderDate: "2021-04-24T16:02",
-      NewOrderPhone: "+79817220312",
-      NewOrderName: "Dima",
-      id:2,
-    },
-  ],
+  
 }
 
 const AllOrdersReducer = (state = initialState, action) => {
   let stateCopy = {
     ...state,
     CreatedOrders:[...state.CreatedOrders],
-    NewOrder : [...state.NewOrder],
+    
   }
-       
+  
   switch (action.type) {
     case ADD_ORDER: 
-      
+   
       let CreateNewOrder = {
-        NewOrderText: state.NewOrder[0].NewOrderText,
-        NewOrderDate: state.NewOrder[0].NewOrderDate,
-        NewOrderPhone: state.NewOrder[0].NewOrderPhone,
-        NewOrderName: state.NewOrder[0].NewOrderName,
-        id:state.NewOrder[0].id,
+        NewOrderText: action.message,
+        NewOrderDate: action.date,
+        NewOrderPhone: action.phone,
+        NewOrderName: action.name,
+         
       };
-      
+      console.log(CreateNewOrder);
         stateCopy.CreatedOrders.push(CreateNewOrder)
-        stateCopy.NewOrder[0].NewOrderText = "";
-        stateCopy.NewOrder[0].NewOrderDate = "";
-        stateCopy.NewOrder[0].NewOrderPhone = "";
-        stateCopy.NewOrder[0].NewOrderName = "";
+         
       return stateCopy;
      
 
-    case UpdateAllOrder: 
-      
-      
-      stateCopy.NewOrder[0].NewOrderText = action.NewMessage;
-      stateCopy.NewOrder[0].NewOrderDate = action.NewDate;
-      stateCopy.NewOrder[0].NewOrderPhone = action.NewPhone;
-      stateCopy.NewOrder[0].NewOrderName = action.NewName;
-      return stateCopy;
+     
      
     default:
       return state ;
   }
 };
 
-export const addOrderActionsCreater = () => {
+export const addOrderActionsCreater = (message, date, phone, name) => {
   
   return {
-    type: ADD_ORDER,
+    type: ADD_ORDER, message, date, phone, name
   };
 };
-
-export const UpdateAllOrderActionsCreater = (message, date, phone, name) => {
-  return {
-    type: UpdateAllOrder,
-    NewMessage: message,
-    NewDate: date,
-    NewPhone: phone,
-    NewName: name,
-  };
-};
+ 
 export default AllOrdersReducer;

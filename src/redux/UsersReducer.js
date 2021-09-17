@@ -110,7 +110,7 @@ export const followThunkCreator = (id) => {
         dispatch(follow(id));
       }
 
-    dispatch(toggleIsFollowingProgress(false, id));
+      dispatch(toggleIsFollowingProgress(false, id));
     });
   };
 };
@@ -123,7 +123,7 @@ export const unFollowThunkCreator = (id) => {
         dispatch(unfollow(id));
       }
 
-    dispatch(toggleIsFollowingProgress(false, id));
+      dispatch(toggleIsFollowingProgress(false, id));
     });
   };
 };
