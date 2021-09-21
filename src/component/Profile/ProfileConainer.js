@@ -15,7 +15,10 @@ class ProfileConainer extends React.Component {
       
     let userId = this.props.id
     if (!userId) {
-      userId = 2
+      userId = this.props.authorizedUserId
+      if(!userId){
+        this.props.history.push("login")
+      }
     }
 
     this.props.getUsersThunkCreator(userId)
@@ -38,6 +41,8 @@ let mapStateToProps = (state) => ({
   ProductItem: state.GiveAcceptReducer.ProductItem,
   profile: state.GiveAcceptReducer.profile,
   id: state.auth.id,
+  authorizedUserId: state.auth.id,
+  isAuth: state.auth.isAuth,
 
 
 });
