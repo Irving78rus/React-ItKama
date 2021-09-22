@@ -1,82 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Preloader from "../Preloader/Preloader";
 
-class ProfileStatus extends React.Component {
-  CheckForDownload=()=>{
-      console.log(this.props);
-    if (!this.props.profile) {
-      return <Preloader />;
-    }
-    else {
-      return (this.ProductItem = this.props.ProductItem.map((item) => (
-      <div className="product-item" key={item.id}>
-        <div className="product-img"  >
-        <NavLink to=''><img src={this.props.profile.photos.large} alt='foto'/></NavLink>
-         
-        </div>
-        <div className="product-list">
-          <h3>{this.props.profile.aboutMe}</h3>
-    
-          <span className="price">{this.props.profile.lookingForAJob}</span>
-          <div className="actions">
-            <div className="add-to-cart">
-            <NavLink to='' className="cart-button"><img src={this.props.profile.lookingForAJobDescription} alt='foto'/></NavLink>
-               
-    
-              <div className="cart-name">Дмитрий</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    ))  )}
-  }
-  state = {
-    status: this.props.status,
-    editMode: false,
-  };
-activateEditMode =() => {
+const ProfileStatus =(props)=> {
+ 
    
-   
-    this.setState({
-        editMode:true 
-    })
-     
-}
-deactivateEditMode=() => {
-    debugger
-    this.setState({
-        editMode:false 
-    })
-    this.props.updateStatusThunkCreator(this.state.status); 
-}
-onStatusChange  = (e) =>  {
-    this.setState({
-    status: e.currentTarget.value
-  })
-}
-componentDidUpdate(prevProps, prevState){
-    if(prevProps.status!==this.props.status){
-      this.setState({status:this.props.status})
-    }
-      }
-  render() {
 
-     this.CheckForDownload()
+  let [editMode , setEditMode] = useState(false)
+  let [status , setStatus] = useState(props.status)
+   
+const activateEditMode =() => {
+  setEditMode(true)
+}
+const deactivateEditMode=() => {
+  setEditMode(false)
+    props.updateStatusThunkCreator( status); 
+}
+const onStatusChange  = (e) =>  {
+  setStatus(e.currentTarget.value
+   )
+}
+// componentDidUpdate(prevProps, prevState){
+//     if(prevProps.status!==this.props.status){
+//       this.setState({status:this.props.status})
+//     }
+//       }
+   
+
+  
     return (
       <>
-        {!this.state.editMode &&
+        {! editMode &&
         <div>
-          <span onDoubleClick = {this.activateEditMode}> {this.props.status}</span>
+          <span onDoubleClick = {activateEditMode}> { props.status}</span>
         </div>
         }
-        { this.state.editMode&&
+        { editMode&&
         <div>
-          <input autoFocus={true} onBlur = {this.deactivateEditMode} onChange={this.onStatusChange }   value={this.state.status} />
+          <input autoFocus={true} onBlur = { deactivateEditMode} onChange={ onStatusChange }   value={ status} />
         </div>}
-        <div className="main_content">{this.ProductItem}</div>;
+       
       </>
     );
-  }
+   
 }
 export default ProfileStatus;

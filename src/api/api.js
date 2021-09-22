@@ -63,8 +63,8 @@ export const followApi = (id = 1) => {
     },  
       updateStatus   (status )   {
         debugger
-      return instance.put(`profile/status/`,   status  )
-      .then(response =>response.data)
+      return instance.put(`profile/status/`,   { status: status }  )
+       
        
     }, 
   }
