@@ -2,9 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
  
 import Preloader from "../../Preloader/Preloader";
+import { logout } from './../../../redux/auth-reducer';
 
 function LoginLink(props) {
-  console.log(props);
+   
   if (!props) {
     return <Preloader /> 
   }
@@ -12,7 +13,11 @@ function LoginLink(props) {
   return (
      <div>
      
-{props.data.isAuth? <NavLink className="nav-link" to={'/login'}>{props.data.login}</NavLink>: <NavLink className="nav-link" to={'/login'}>Вход</NavLink>}
+{props.data.isAuth? <div><NavLink className="nav-link" to={'/Profile'}>{props.data.login}</NavLink>  
+<button onClick={props.data.logout} >logout</button></div>
+
+
+: <NavLink className="nav-link" to={'/login'}>Вход</NavLink>}
 
      
      </div>

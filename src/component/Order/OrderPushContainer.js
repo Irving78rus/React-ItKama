@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import {
   addOrderActionsCreater,
-  UpdateAllOrderActionsCreater,
+ 
 } from "../../redux/AllOrdersReducer";
 
 import OrderPush from "./OrderPush";
@@ -15,12 +15,10 @@ const mapStateToProps = (state) => {
 };
 function mapDispatchToProps(dispatch) {
   return {
-    addOrder: () => {
-      dispatch(addOrderActionsCreater());
+    addOrder: (message, date, phone, name) => {
+      dispatch(addOrderActionsCreater(message, date, phone, name));
     },
-    UpdateAllOrder: (message, date, phone, name) => {
-      dispatch(UpdateAllOrderActionsCreater(message, date, phone, name));
-    },
+     
   };
 }
 const OrderPushContainer = connect(mapStateToProps,mapDispatchToProps)(OrderPush);

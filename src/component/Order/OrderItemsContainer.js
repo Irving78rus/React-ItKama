@@ -1,8 +1,5 @@
 import { connect } from "react-redux";
-import {
-  addOrderActionsCreater,
-  UpdateAllOrderActionsCreater,
-} from "../../redux/AllOrdersReducer";
+ 
 import OrderItems from "./OrderItems";
  
 
@@ -12,16 +9,7 @@ const mapStateToProps = (state) => {
     CreatedOrders: state.Orders.CreatedOrders,
   };
 };
-function mapDispatchToProps(dispatch) {
-  return {
-    addOrder: () => {
-      dispatch(addOrderActionsCreater());
-    },
-    UpdateAllOrder: (message, date, phone, name) => {
-      dispatch(UpdateAllOrderActionsCreater(message, date, phone, name));
-    },
-  };
-}
-const OrderItemsContainer = connect(mapStateToProps,mapDispatchToProps)(OrderItems);
+ 
+const OrderItemsContainer = connect(mapStateToProps,{})(OrderItems);
 
 export default OrderItemsContainer;
