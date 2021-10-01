@@ -10,9 +10,9 @@ import  '../Preloader/formControl.css'
 
 
 const maxLength10 = maxLengthCreator(33)
-const LoginForm = (props)=> {
+const LoginForm = (handleSubmit,error)=> {
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div>
         <Field placeholder={"LOgin"} validate ={[required, maxLength10]} name={"email"} component ={Input}/>
       </div>
@@ -22,7 +22,7 @@ const LoginForm = (props)=> {
       <div>
         <Field type={"checkbox"} name={"rememberMe"} component={Input} />  remembe me
       </div>
-      {props.error && <div className ="formSummaryError">{props.error}</div>}
+      {error && <div className ="formSummaryError">{error}</div>}
       <div>
         <button> LOgin</button>
       </div>

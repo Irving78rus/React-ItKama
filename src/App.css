@@ -345,4 +345,18 @@ label {
 .selected{
   font-size: 40px;
   font-weight: bold;
+  padding: 2px;
+  border: 1px solid grey
+    
+}
+.paginator {
+  margin: 10px
+}
+.pageNumber{
+  padding: 2px;
+  border: 1px solid grey
+}
+.pageNumber.selectPage {
+  font-size: bold;
+  border-color: black;
 }

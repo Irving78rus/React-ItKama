@@ -6,8 +6,8 @@ import React from "react";
 import LoginLink from "../loginLink/LoginLink";
 import { NavLink } from "react-router-dom";
 
-function Nav(props) {
-   
+const  Nav  = React.memo((props) =>{
+  
   return (
     <div>
       <nav className="nav container">
@@ -54,5 +54,5 @@ function Nav(props) {
     </div>
   );
 }
-
+)
 export default Nav;

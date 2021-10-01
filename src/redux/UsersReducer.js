@@ -1,4 +1,5 @@
 import { followApi, getUsers, unFollowApi } from "../api/api";
+import { updateObkectInArray } from "../utils/obj-help";
 
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
@@ -22,26 +23,28 @@ const usersReducer = (state = initialState, action) => {
     case FOLLOW:
       return {
         ...state,
+          users: updateObkectInArray(state.users, action.userId, "id", { followed: true })
         // users:  [...state.users], тожесамое что строчка ниже
-        users: state.users.map((u) => {
-          if (u.id === action.userId) {
-            return { ...u, followed: true };
-          }
-          return u;
-        }),
+        // users: state.users.map((u) => {
+        //   if (u.id === action.userId) {
+        //     return { ...u, followed: true };
+        //   }
+        //   return u;
+        // }),
       };
 
     case UNFOLLOW:
       return {
         ...state,
+        users: updateObkectInArray(state.users, action.userId, "id", { followed: false })
         // users:  [...state.users], тожесамое что строчка ниже
         // users: state.users.map(u =>u)
-        users: state.users.map((u) => {
-          if (u.id === action.userId) {
-            return { ...u, followed: false };
-          }
-          return u;
-        }),
+        // users: state.users.map((u) => {
+        //   if (u.id === action.userId) {
+        //     return { ...u, followed: false };
+        //   }
+        //   return u;
+        // }),
       };
     case SET_USERS: {
       return { ...state, users: action.users };
@@ -69,8 +72,8 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-export const follow = (userId) => ({ type: FOLLOW, userId });
-export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
+export const followSucsess = (userId) => ({ type: FOLLOW, userId });
+export const unfollowSucsess = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsers = (users) => ({ type: SET_USERS, users });
 export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
@@ -90,42 +93,36 @@ export const toggleIsFollowingProgress = (isFetching, userId) => ({
   userId,
 });
 
-export const getUsersThunkCreator = (currentPage, pageSize) => {
-  return (dispatch) => {
-    dispatch(toggleIsFetching(true));
-    getUsers(currentPage, pageSize).then((data) => {
-      dispatch(toggleIsFetching(false));
-      dispatch(setUsers(data.items));
-      dispatch(setTotalUsersCount(data.totalCount));
-    });
-  };
+export const requestUsers = (currentPage, pageSize) => async (dispatch) => {
+  dispatch(toggleIsFetching(true));
+  let data = await getUsers(currentPage, pageSize)
+  dispatch(toggleIsFetching(false));
+  dispatch(setUsers(data.items));
+  dispatch(setTotalUsersCount(data.totalCount));
+
+
 };
 
-export const followThunkCreator = (id) => {
-  return (dispatch) => {
-    dispatch(toggleIsFollowingProgress(true, id));
 
-    followApi(id).then((data) => {
-      if (data.resultCode === 0) {
-        dispatch(follow(id));
-      }
+export const followUnfollowFlow = async (id, dispatch, apiMethod, actionCreater) => {
+  dispatch(toggleIsFollowingProgress(true, id));
+  let response = apiMethod
+  if (response.data.resultCode === 0) {
+    dispatch(actionCreater);
+  }
+  dispatch(toggleIsFollowingProgress(false, id));
+}
 
-      dispatch(toggleIsFollowingProgress(false, id));
-    });
-  };
+export const Follow = (id) => async (dispatch) => {
+  let apiMethod = await followApi(id)
+  let actionCreater = followSucsess(id)
+  followUnfollowFlow(id, dispatch, apiMethod, actionCreater)
 };
-export const unFollowThunkCreator = (id) => {
-  return (dispatch) => {
-    dispatch(toggleIsFollowingProgress(true, id));
 
-    unFollowApi(id).then((data) => {
-      if (data.resultCode === 0) {
-        dispatch(unfollow(id));
-      }
-
-      dispatch(toggleIsFollowingProgress(false, id));
-    });
-  };
+export const unFollow = (id) => async (dispatch) => {
+  let apiMethod = await unFollowApi(id)
+  let actionCreater = unfollowSucsess(id)
+  followUnfollowFlow(id, dispatch, apiMethod, actionCreater)
 };
 
 export default usersReducer;

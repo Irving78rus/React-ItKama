@@ -7,9 +7,10 @@ import thunkMiddleware from "redux-thunk";
 import ProfileReducer from "./ProfileReducer";
 import { reducer as formReducer } from "redux-form";
 import appReducer from "./appReducer";
+import { compose,createStore, combineReducers, applyMiddleware  } from "redux";
 
 
-const { createStore, combineReducers, applyMiddleware } = require("redux");
+ 
 let reducers = combineReducers({
   Orders: AllOrdersReducer,
   Product: ProductReducer,
@@ -20,7 +21,8 @@ let reducers = combineReducers({
   form: formReducer,
   app:appReducer,
 });
-
-let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+ const store = createStore(reducers, /* preloadedState, */ composeEnhancers( applyMiddleware(thunkMiddleware)));
+ 
 
 export default store;

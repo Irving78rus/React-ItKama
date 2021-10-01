@@ -44,33 +44,27 @@ export const setStatus = (status) => {
   return { type: SET_STATUS, status };
 };
 
-export const getUsersThunkCreator = (userId) => {
-  return (dispatch) => {
-    dispatch(toggleIsFetching(true));
-    getUsersProfileApi(userId).then((data) => {
-      dispatch(toggleIsFetching(false));
-      dispatch(setUserProfile(data));
-    });
-  };
-};
-export const getStatusThunkCreator = (userId) => {
-  return (dispatch) => {
-    dispatch(toggleIsFetching(true));
-    ProfileApi.getStatus(userId).then((response) => {
-      dispatch(toggleIsFetching(false));
-      dispatch(setStatus(response.data));
-    });
-  };
-};
-export const updateStatusThunkCreator = (status) => (dispatch) => {
+export const getUsersThunkCreator = (userId) => async (dispatch) => {
   dispatch(toggleIsFetching(true));
-  ProfileApi.updateStatus(status)
-    .then((response) => {
-      dispatch(toggleIsFetching(false));
-      if (response.data.resultCode === 0) {
-        dispatch(setStatus(status));
-      }
-    });
+  let response = await getUsersProfileApi(userId)
+  dispatch(toggleIsFetching(false));
+  dispatch(setUserProfile(response));
+}
+
+export const getStatusThunkCreator = (userId) => async (dispatch) => {
+  dispatch(toggleIsFetching(true));
+  let response = await ProfileApi.getStatus(userId)
+  dispatch(toggleIsFetching(false));
+  dispatch(setStatus(response.data));
+}
+
+export const updateStatusThunkCreator = (status) => async (dispatch) => {
+  dispatch(toggleIsFetching(true));
+  let response = await ProfileApi.updateStatus(status)
+  dispatch(toggleIsFetching(false));
+  if (response.data.resultCode === 0) {
+    dispatch(setStatus(status));
+  }
 };
 
 
