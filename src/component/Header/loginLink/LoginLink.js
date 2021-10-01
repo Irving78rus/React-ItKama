@@ -5,7 +5,7 @@ import Preloader from "../../Preloader/Preloader";
 import { logout } from './../../../redux/auth-reducer';
 
 function LoginLink(props) {
-   
+   console.log();
   if (!props) {
     return <Preloader /> 
   }

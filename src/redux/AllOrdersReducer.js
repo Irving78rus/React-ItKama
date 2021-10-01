@@ -9,6 +9,13 @@ let initialState = {
       NewOrderName: "Dima",
       
     },
+    {
+      NewOrderText: "ХОчу закакзать много товаров из икея",
+      NewOrderDate: "11.11",
+      NewOrderPhone: "+79817220312",
+      NewOrderName: "Dima",
+      
+    },
   ],
   
 }

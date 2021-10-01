@@ -29,16 +29,15 @@ export const setStatus = (status) => {
 };
 
 export const getStatusThunkCreator = (userId) => async (dispatch) => {
-        
-      let response= await ProfileApi.getStatus(userId) 
-      dispatch(setStatus(response.data));
-         
+
+    let response = await ProfileApi.getStatus(userId)
+    dispatch(setStatus(response.data));
 }
 
 export const updateStatusThunkCreator = (status) => async (dispatch) => {
     let response = await ProfileApi.updateStatus(status)
     // if (response.data.resultCode === 0) {
-        dispatch(setStatus(status));
+    dispatch(setStatus(status));
     // }
 };
 
