@@ -3,7 +3,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 function Sellbuy(props) {
-  const ProductItem = props.data.map((item) => (
+  debugger
+  const ProductItem = props.ProductItem.map((item) => (
     <div className="product-item" key={item.id}>
       <div className="product-img">
         <NavLink to="">
