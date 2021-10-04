@@ -343,10 +343,11 @@ label {
   color: #ae1100;
 }
 .selected{
-  font-size: 40px;
+   
+  font-size: 20px;
   font-weight: bold;
-  padding: 2px;
-  border: 1px solid grey
+  padding: 1px;
+  border: 1px solid black
     
 }
 .paginator {
