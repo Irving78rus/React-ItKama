@@ -21,8 +21,9 @@ import { compose } from "redux";
 import Preloader from "./component/Preloader/Preloader";
 import { Suspense } from "react";
 import { WithSuspense } from "./hoc/withSuspense";
-const RentContainer = React.lazy(() => import("./component/Header/RentContainer"))
-const SellBuyContainer = React.lazy(() => import("./component/Header/SellBuyContainer"))
+ 
+  const RentContainer = React.lazy(() => import("./component/Header/RentContainer"))
+  const SellBuyContainer = React.lazy(() => import("./component/Header/SellBuyContainer"))
 
 
 class App extends React.Component {
@@ -51,7 +52,7 @@ class App extends React.Component {
           <Route path="/login" render={() => <LoginPageConainer />} />
           <Route path="/Profile" render={() => <ProfileConainer />} />
           <Route exact path="/ " component={App} />
-          <Route path="/Rent" render={WithSuspense(RentContainer)} />
+          <Route path="/Rent" render= {WithSuspense(RentContainer)} />
           <Route path="/give-accept/:userId?" render={() => <GiveAcceptContainer />} />
           <Route path="/Sellbuy" render={WithSuspense(SellBuyContainer)} />
           <Route path="/AllOrder" render={() => <AllOrder CreatedOrders={store.getState().Orders.CreatedOrders} />} />

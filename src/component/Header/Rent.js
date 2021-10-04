@@ -3,7 +3,7 @@ import React from "react";
 import { NavLink } from 'react-router-dom';
 
 function Rent(props) {
-  debugger
+ 
   const ProductItem = props.ProductItem.map((item) => (
     <div className="product-item" key={item.id}>
       
