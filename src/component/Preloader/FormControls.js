@@ -5,7 +5,7 @@ import  '../Preloader/formControl.css'
 export const FormControl =({input,meta,child,...props})=>{
     const hasError = meta.touched && meta.error
     return (
-        <div className = { `formControl` +` `+ (hasError?`error`:"" )}  >
+        <div className = {  "formControl " + " "+ (hasError? "error ":" " )}  >
             <div>
              {props.children}
             </div>

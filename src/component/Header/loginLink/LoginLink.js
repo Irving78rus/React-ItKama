@@ -1,29 +1,55 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
  
-import Preloader from "../../Preloader/Preloader";
-import { logout } from './../../../redux/auth-reducer';
-
-function LoginLink(props) {
-   console.log();
-  if (!props) {
-    return <Preloader /> 
-  }
+import "../../../App.css";
  
-  return (
-     <div>
-     
-{props.data.isAuth? <div><NavLink className="nav-link" to={'/Profile'}>{props.data.login}</NavLink>  
-<button onClick={props.data.logout} >logout</button></div>
+ 
+import "./LoginMenu.css";
 
-
-: <NavLink className="nav-link" to={'/login'}>Вход</NavLink>}
-
-     
-     </div>
+class LoginLink extends React.Component {
   
-     
-  )
+  state = {
+    show: false
+  };
+
+  toggleShow = () => {
+    this.setState(prevState => ({
+      show: !prevState.show
+    }));
+  };
+
+  handleClick = () => {
+
+    this.props.data.logout()
+    this.toggleShow();
+  };
+
+
+
+  render() {
+    return (
+      <div>
+        {this.props.data.isAuth ? <span onClick={this.toggleShow} className="nav-link"> {this.props.data.login}
+        </span>
+          : <NavLink className="nav-link" to={'/login'}>Вход</NavLink>}
+        {this.state.show && (
+          <div>
+            <div className='Cover' onClick={this.toggleShow}  ></div>
+
+            <div className='Menu'>
+              <div className='MenuItem' onClick={this.handleClick}>выход</div>
+              <div className="MenuItem" ><NavLink to={'/Profile'} onClick={this.toggleShow}>Profile</NavLink> </div>
+            </div>
+
+          </div>
+        )}
+
+      </div>
+    )
+  }
+
+
+
 }
 
 export default LoginLink;

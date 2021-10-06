@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "../../../src/App.css";
+import "../../../App.css";
 let Paginator = ({ totalUsersCount, pageSize, currentPage, onPageChanged, portionSize = 10 }) => {
 
     let pagesCount = Math.ceil(totalUsersCount / pageSize);

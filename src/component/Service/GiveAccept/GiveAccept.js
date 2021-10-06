@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
-import Preloader from "./../../Preloader/Preloader";
+import Preloader from "../../Preloader/Preloader";
 
 class GiveAccept extends React.Component {
    
@@ -92,9 +91,9 @@ if(prevProps.status!==this.props.status){
             />
           </div>
          }
-        <div className="main_content">{this.ProductItem}</div>;
+        <div className="main_content">{this.ProductItem}</div>
       </div>
-    );
+    )
   }
   
 }

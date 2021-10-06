@@ -7,30 +7,27 @@ import { getUsersThunkCreator } from "../../redux/GiveAcceptReducer";
 import Profile from "./Profile";
 import { compose } from "redux";
 import { getStatusThunkCreator, updateStatusThunkCreator } from "../../redux/ProfileReducer";
+import { logout } from "../../redux/auth-reducer";
 
 class ProfileConainer extends React.Component {
 
 
   componentDidMount() {
-      
     let userId = this.props.id
     if (!userId) {
       userId = this.props.authorizedUserId
-      if(!userId){
+      if (!userId) {
         this.props.history.push("login")
       }
     }
 
     this.props.getUsersThunkCreator(userId)
     this.props.getStatusThunkCreator(userId)
-    
-
   }
   render() {
- 
     return <>
       {this.props.isFetching ? <Preloader /> : null}
-      <Profile {...this.props} />;
+      <Profile {...this.props} /> 
     </>
   }
 
@@ -49,7 +46,7 @@ let mapStateToProps = (state) => ({
 
 
 export default compose(
-  connect(mapStateToProps, { getUsersThunkCreator, getStatusThunkCreator, updateStatusThunkCreator }),
+  connect(mapStateToProps, { getUsersThunkCreator, getStatusThunkCreator, updateStatusThunkCreator,logout }),
   withRouter,
   withAuthRedirect,
 )(ProfileConainer)

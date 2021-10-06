@@ -52,7 +52,7 @@ export const ProfileApi = {
     return instance.get(`profile/status/${userId}`)
   },
   updateStatus(status) {
-    debugger
+     
     return instance.put(`profile/status/`, { status: status })
   },
 }

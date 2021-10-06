@@ -1,10 +1,8 @@
-import React from "react";
+import React from "react"
 // @ts-ignore
-import userPhoto from "../../assets/images/man.png";
-import "../../../src/App.css";
-import { NavLink } from "react-router-dom";
-
-
+import userPhoto from "../../../assets/images/man.png"
+import "../../../App.css"
+import { NavLink } from "react-router-dom"
 
 const User = (  props) => {
   
@@ -27,7 +25,7 @@ const User = (  props) => {
             <button
               disabled={props.followingInProgress.some((id) => id === u.id)}
               onClick={() => {
-                props.unFollow(u.id);
+                props.unFollow(u.id)
               }}
             >
               unfollow
@@ -36,7 +34,7 @@ const User = (  props) => {
             <button
               disabled={props.followingInProgress.some((id) => id === u.id)}
               onClick={() => {
-                props.Follow(u.id);
+                props.Follow(u.id)
               }}
             >
               follow{" "}
@@ -55,7 +53,7 @@ const User = (  props) => {
     </div>
       
     
-  );
-};
+  )
+}
 
-export default User;
+export default User

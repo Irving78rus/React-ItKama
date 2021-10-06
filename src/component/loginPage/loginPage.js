@@ -10,7 +10,7 @@ import  '../Preloader/formControl.css'
 
 
 const maxLength10 = maxLengthCreator(33)
-const LoginForm = (handleSubmit,error)=> {
+const LoginForm = ({handleSubmit,error} )=> {
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -22,7 +22,7 @@ const LoginForm = (handleSubmit,error)=> {
       <div>
         <Field type={"checkbox"} name={"rememberMe"} component={Input} />  remembe me
       </div>
-      {error && <div className ="formSummaryError">{error}</div>}
+      { error && <div className ="formSummaryError">{error}</div>}
       <div>
         <button> LOgin</button>
       </div>

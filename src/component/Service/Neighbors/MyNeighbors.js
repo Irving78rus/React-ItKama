@@ -1,8 +1,9 @@
 import React from "react";
 // @ts-ignore
-import "../../../src/App.css";
+import "../../../App.css";
 import Paginator from "./paginator";
 import User from "./User";
+ 
 
 
 let Users = (props) => {
