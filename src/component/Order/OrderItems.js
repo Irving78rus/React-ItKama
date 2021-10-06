@@ -6,8 +6,7 @@ import { NavLink } from 'react-router-dom';
 function OrderItems(props) {
    
   const OrdersItem = props.CreatedOrders.map((item) => (
-   
-    <div className="Orders_content" key={item.id}>
+       <div className="Orders_content" key={item.id}>
       <div className="product-img" >
         <p>
           {item.NewOrderText}  

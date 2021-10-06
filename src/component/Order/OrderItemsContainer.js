@@ -1,8 +1,6 @@
 import { connect } from "react-redux";
- 
 import OrderItems from "./OrderItems";
  
-
 const mapStateToProps = (state) => {
   return {
     NewOrder: state.Orders.NewOrder,

@@ -1,16 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import Users from "./MyNeighbors";
 import {
   Follow,
   setCurrentPage,
   unFollow,
   toggleIsFollowingProgress,
   requestUsers,
-} from "../../redux/UsersReducer";
+} from "../../../redux/UsersReducer";
+import Preloader from "../../Preloader/Preloader";
+import Users from "./MyNeighbors";
 
  
-import Preloader from "../Preloader/Preloader";
+ 
 
 class UsersContainer extends React.Component {
   
@@ -33,7 +34,7 @@ class UsersContainer extends React.Component {
         {this.props.isFetching ? <Preloader /> : null}
         <Users  onPageChanged={this.onPageChanged} Follow={Follow} unFollow={unFollow} {...this.props} />
       </>
-    );
+    )
   }
 }
 
@@ -56,25 +57,4 @@ export default connect(mapStateToProps, {
   requestUsers,
 })(UsersContainer);
 
-// let mapDispatchToProps = (dispatch) => {
-//     return {
-//         follow: (userId) => {
-//             dispatch(followAC(userId));
-//         },
-//         unfollow: (userId) => {
-//             dispatch(unfollowAC(userId));
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsersAC(users));
-//         },
-//         setCurrentPage: (pageNumber) => {
-//             dispatch(setCurrentPageAC(pageNumber));
-//         },
-//         setTotalUsersCount: (totalCount) => {
-//             dispatch(setTotalUsersCountAC(totalCount));
-//         },
-//         toggleIsFetching: (isFetching) => {
-//             dispatch(toggleIsFetchingAC(isFetching));
-//         },
-//     };
-// };
+ 

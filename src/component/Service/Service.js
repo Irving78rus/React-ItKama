@@ -71,7 +71,7 @@ function Service() {
           </li>
 
           <li className="service_li">
-          <NavLink to= ""><div className="service_block" id="service_block5">
+          <NavLink to={'/Profile'}><div className="service_block" id="service_block5">
                 <img src={imgg} alt="imgg"/>
                 <h5>
                 Новости <br />

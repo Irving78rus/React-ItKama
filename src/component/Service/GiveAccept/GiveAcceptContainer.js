@@ -1,16 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import GiveAccept from "./GiveAccept";
-
 import { getStatusThunkCreator, getUsersThunkCreator, updateStatusThunkCreator } from "../../../redux/GiveAcceptReducer";
 import { withRouter } from "react-router-dom";
-
 import Preloader from "../../Preloader/Preloader";
 import { compose } from "redux";
-import { getAuthId, getIsAuth, getProductItem, getStatus, getStatusSuperSelector, Profile } from "../../../redux/selectors";
-
-
-
+import { getAuthId, getIsAuth, getProductItem, getStatusSuperSelector, Profile } from "../../../redux/selectors";
 
 
 class GiveAcceptContainer extends React.Component {
@@ -38,7 +33,7 @@ class GiveAcceptContainer extends React.Component {
         updateStatusThunkCreator={this.props.updateStatusThunkCreator}
         {...this.props}
         
-      />;
+      />
     </>
   }
 
@@ -46,7 +41,6 @@ class GiveAcceptContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-
   return {
     status: getStatusSuperSelector(state),
     ProductItem: getProductItem(state),
@@ -54,7 +48,6 @@ let mapStateToProps = (state) => {
     authorizedUserId: getAuthId(state),
     isAuth: getIsAuth(state),
     // id: state.auth.id,
-
   };
 };
 export default compose(

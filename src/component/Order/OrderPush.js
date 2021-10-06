@@ -68,11 +68,9 @@ function OrderPush(props) {
 
   return (
     <div>
-     
-             
-            <CreateOrderReduxForm onSubmit={onSubmit} />
+                 <CreateOrderReduxForm onSubmit={onSubmit} />
     </div>
-  );
+  )
 }
 
 const CreateOrderReduxForm = reduxForm({ form: "CreateOrder" })(OrderForm);

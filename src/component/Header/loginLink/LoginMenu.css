@@ -1,0 +1,40 @@
+.Menu{
+   position: absolute;
+    width: 200px;
+    background: #fff;
+    box-shadow: 0 1px 2px 0 rgba(64, 80, 108, 0.2),
+      0 0 24px -1px rgba(64, 80, 108, 0.2);
+    border-radius: 8px;
+  
+    
+}
+.Menu:after {
+    content: "";
+    position: absolute;
+    right: 170px;
+    top: -14px;
+    border: 7px solid transparent;
+    border-bottom: 7px solid #fff;
+  }
+
+  .MenuItem{
+  padding: 16px;
+  font-size: 14px;
+  color: #657389;
+  line-height: 1;
+  cursor: pointer;
+}
+.MenuItem:not(:last-child) {
+    border-bottom: 1px solid rgba(64, 80, 108, 0.1);
+  }
+
+  .MenuItem:hover {
+    background-color: rgba(245, 246, 248, 0.5);
+    color: #40506c;
+  }
+.Cover { position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;}
+ 
