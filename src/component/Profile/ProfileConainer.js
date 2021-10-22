@@ -6,13 +6,12 @@ import Preloader from "../Preloader/Preloader";
 import { getUsersThunkCreator } from "../../redux/GiveAcceptReducer";
 import Profile from "./Profile";
 import { compose } from "redux";
-import { getStatusThunkCreator, updateStatusThunkCreator } from "../../redux/ProfileReducer";
+import { getStatusThunkCreator, savePhoto, saveProfile, updateStatusThunkCreator } from "../../redux/ProfileReducer";
 import { logout } from "../../redux/auth-reducer";
 
 class ProfileConainer extends React.Component {
 
-
-  componentDidMount() {
+  refreshProfile(){
     let userId = this.props.id
     if (!userId) {
       userId = this.props.authorizedUserId
@@ -24,10 +23,19 @@ class ProfileConainer extends React.Component {
     this.props.getUsersThunkCreator(userId)
     this.props.getStatusThunkCreator(userId)
   }
+  componentDidMount() {
+     
+     this.refreshProfile()
+  }
+  componentDidUpdate(prevProps){
+    if(this.props.id!== prevProps.id){
+       this.refreshProfile()}
+   
+  }
   render() {
     return <>
       {this.props.isFetching ? <Preloader /> : null}
-      <Profile {...this.props} /> 
+      <Profile isOwner ={this.props.id} savePhoto={this.props.savePhoto} {...this.props} /> 
     </>
   }
 
@@ -46,7 +54,7 @@ let mapStateToProps = (state) => ({
 
 
 export default compose(
-  connect(mapStateToProps, { getUsersThunkCreator, getStatusThunkCreator, updateStatusThunkCreator,logout }),
+  connect(mapStateToProps, {saveProfile, getUsersThunkCreator,savePhoto, getStatusThunkCreator, updateStatusThunkCreator,logout }),
   withRouter,
   withAuthRedirect,
 )(ProfileConainer)

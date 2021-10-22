@@ -1,10 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
- 
-import "../../../App.css";
- 
- 
-import "./LoginMenu.css";
+import "../Navigation/LoginMenu.css";
 
 class LoginLink extends React.Component {
   

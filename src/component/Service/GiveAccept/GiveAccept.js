@@ -1,7 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Preloader from "../../Preloader/Preloader";
-
+// @ts-ignore
+import userPhoto from  '../../../assets/images/man.png'
 class GiveAccept extends React.Component {
    
   CheckForDownload = () => {
@@ -12,7 +13,7 @@ class GiveAccept extends React.Component {
         <div className="product-item" key={item.id}>
           <div className="product-img">
             <NavLink to="">
-              <img src={this.props.profile.photos.large} alt="foto" />
+              <img src={this.props.profile.photos.large || userPhoto} alt="foto" />
             </NavLink>
           </div>
           <div className="product-list">
@@ -74,7 +75,7 @@ if(prevProps.status!==this.props.status){
         
         {!this.state.editMode &&  
           <div>
-            <span onDoubleClick={this.activateEditMode}>
+           <b>Status: </b> <span onDoubleClick={this.activateEditMode}>
               
               {this.props.status}
             </span>

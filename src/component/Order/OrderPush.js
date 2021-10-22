@@ -3,7 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import "../../../src/App.css";
 import { NavLink } from 'react-router-dom';
 import { maxLengthCreator, required } from "../../utils/validators";
-import { Input, Textarea } from "../Preloader/FormControls";
+import { Input, Textarea } from "../../utils/FormControls";
 
 
 const maxLength10 = maxLengthCreator(10)

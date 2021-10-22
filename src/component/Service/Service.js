@@ -1,6 +1,7 @@
 import React from "react";
 // @ts-ignore
-import imgg from "../../../src/img/96.png";
+import imgg from "../../assets/images/96.png";
+ 
 import "../../../src/App.css";
 import { NavLink } from "react-router-dom";
 

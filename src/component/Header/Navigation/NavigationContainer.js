@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { logout, getAuthUserData } from "../../../redux/auth-reducer";
-import Nav from "./Nav";
+import Nav from "./Navigation";
 
 class NavContainer extends React.Component {
  

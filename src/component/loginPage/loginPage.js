@@ -4,8 +4,9 @@ import { Redirect } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
 import { login } from '../../redux/auth-reducer';
 import { maxLengthCreator, required } from '../../utils/validators';
-import { Input } from '../Preloader/FormControls';
-import  '../Preloader/formControl.css'
+import { Input } from '../../utils/FormControls';
+import  '../../utils/FormControl.css'
+ 
  
 
 
@@ -20,7 +21,7 @@ const LoginForm = ({handleSubmit,error} )=> {
         <Field placeholder={"Password"} validate ={[required, maxLength10]} name={"password"}   component ={Input}/>
       </div>
       <div>
-        <Field type={"checkbox"} name={"rememberMe"} component={Input} />  remembe me
+        <Field type={"checkbox"} name={"rememberMe"} component={'input'} />  remembe me
       </div>
       { error && <div className ="formSummaryError">{error}</div>}
       <div>

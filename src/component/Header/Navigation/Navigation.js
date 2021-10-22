@@ -1,8 +1,9 @@
 // @ts-ignore
-import black from "../../../img/black.jpg";
+import black from "../../../assets/images/black.jpg";
+ 
 import "../../../../src/App.css";
 import React from "react";
-import LoginLink from "../loginLink/LoginLink";
+import LoginLink from "./LoginLink";
  
 import { NavLink } from "react-router-dom";
 

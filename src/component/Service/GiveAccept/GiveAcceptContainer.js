@@ -10,8 +10,7 @@ import { getAuthId, getIsAuth, getProductItem, getStatusSuperSelector, Profile }
 
 class GiveAcceptContainer extends React.Component {
 
-  componentDidMount() {
-
+  refreshProfile(){
     let userId = this.props.match.params.userId
     if (!userId) {
       userId = this.props.authorizedUserId
@@ -19,9 +18,19 @@ class GiveAcceptContainer extends React.Component {
 
     this.props.getUsersThunkCreator(userId)
     this.props.getStatusThunkCreator(userId)
-
+    
     // let status = this.props.status
     // this.props.updateStatusThunkCreator (status)
+  }
+
+  componentDidMount() {
+    this.refreshProfile()
+  }
+
+  componentDidUpdate(prevProps){
+    if(this.props.match.params.userId!== prevProps.match.params.userId){
+       this.refreshProfile()}
+   
   }
 
   render() {
@@ -29,6 +38,7 @@ class GiveAcceptContainer extends React.Component {
     return <>
       {this.props.isFetching ? <Preloader /> : null}
       <GiveAccept
+      // isOwner ={!!this.props.match.params.userId}
         getStatusThunkCreator={this.props.getStatusThunkCreator}
         updateStatusThunkCreator={this.props.updateStatusThunkCreator}
         {...this.props}

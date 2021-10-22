@@ -8,7 +8,7 @@ class LoginPageConainer extends React.Component {
 
         return <>
              
-            <LoginPage {...this.props} />;
+            <LoginPage {...this.props} />
         </>
     }
 
